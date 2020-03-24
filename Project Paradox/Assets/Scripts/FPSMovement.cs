@@ -5,6 +5,7 @@ using UnityEngine;
 public class FPSMovement : MonoBehaviour
 {
     public Aiming mouselook;
+    public AudioSource Breathing;
 
 
     private Rigidbody p_rb;
@@ -30,5 +31,20 @@ public class FPSMovement : MonoBehaviour
         Vector3 move = transform.right * x + transform.forward * z;
         _CharCont.Move(move * speed * Time.deltaTime);
 
+
+        if (x == 0 && z == 0 )
+        {
+           // StartCoroutine(Breath());
+        }
+
+        //if(Input.GetButton(""))
+    }
+
+    IEnumerator Breath()
+    {
+        Debug.Log("Start Wait");
+        yield return new WaitForSeconds(5);
+        Debug.Log("End Wait");
+        Breathing.Play();
     }
 }

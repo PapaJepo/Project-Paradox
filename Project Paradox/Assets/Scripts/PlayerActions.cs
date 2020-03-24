@@ -11,7 +11,7 @@ public class PlayerActions : MonoBehaviour
     public GameObject TextPopup;
     public GameObject TextObject;
 
-    private bool Talking;
+    public bool Talking;
     // Start is called before the first frame update
     void Start()
     {
@@ -70,7 +70,7 @@ public class PlayerActions : MonoBehaviour
             
                 TextPopup.SetActive(false);
             TextObject.SetActive(false);
-
+            Talking = false;
         }
 
     }

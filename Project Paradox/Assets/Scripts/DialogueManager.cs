@@ -11,6 +11,8 @@ public class DialogueManager : MonoBehaviour
     public Animator TextAnim;
     public AudioSource Voice;
 
+    public PlayerActions PlayerRef;
+
     private float TextSpeed = 0.05f;
     private Queue<string> sentences;
     // Start is called before the first frame update
@@ -38,6 +40,7 @@ public class DialogueManager : MonoBehaviour
         if(sentences.Count == 0)
         {
             EndDialogue();
+            PlayerRef.Talking = false;
             return;
         }
         string sentence = sentences.Dequeue();
