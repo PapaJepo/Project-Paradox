@@ -41,6 +41,7 @@ public class DialogueManager : MonoBehaviour
         {
             EndDialogue();
             PlayerRef.Talking = false;
+            PlayerRef.NPCBool = false;
             return;
         }
         string sentence = sentences.Dequeue();
@@ -62,7 +63,7 @@ public class DialogueManager : MonoBehaviour
             {
                 TextAnim.SetBool("Mad", true);
                 MainText.fontStyle = FontStyles.Bold;
-                TextSpeed = 0.2f;
+                TextSpeed = 0.15f;
             }
             
             MainText.text += letter;

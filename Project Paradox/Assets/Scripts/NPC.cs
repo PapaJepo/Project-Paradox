@@ -7,11 +7,12 @@ public class NPC : MonoBehaviour
     public PlayerActions PlayerRef;
     public GameObject Head;
     public GameObject Player;
-
+    public GameObject DefaultHeadPos;
     public Animator N_Anim;
     public float speed = 2f;
     public List<Transform> Waypoints;
     private int CurrentWaypoint;
+    public bool PlayerClose;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +23,7 @@ public class NPC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PlayerRef.Talking == true)
+        if (PlayerClose == true)
         {
             N_Anim.SetBool("Walk", false);
             Head.transform.LookAt(Player.transform);
@@ -30,6 +31,7 @@ public class NPC : MonoBehaviour
         else
         {
             N_Anim.SetBool("Walk", true);
+            Head.transform.LookAt(DefaultHeadPos.transform);
              transform.LookAt(Waypoints[CurrentWaypoint].position);
             transform.position = Vector3.MoveTowards(transform.position, Waypoints[CurrentWaypoint].position, Time.deltaTime * speed);
             UpdateWaypoints();

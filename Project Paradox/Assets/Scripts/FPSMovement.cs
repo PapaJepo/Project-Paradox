@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class FPSMovement : MonoBehaviour
 {
+    public HeadBob BobRef;
     public Aiming mouselook;
     public AudioSource Breathing;
 
-
+    
     private Rigidbody p_rb;
     private CharacterController _CharCont;
 
@@ -37,6 +38,17 @@ public class FPSMovement : MonoBehaviour
            // StartCoroutine(Breath());
         }
 
+
+        if (Input.GetButton("Fire3"))
+        {
+            BobRef.bobbingSpeed = 0.1f;
+            speed = 6f;
+        }
+        else if (Input.GetButtonUp("Fire3"))
+        {
+            BobRef.bobbingSpeed = 0.05f;
+            speed = 4f;
+        }
         //if(Input.GetButton(""))
     }
 
